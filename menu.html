@@ -1,0 +1,2647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Savora | Full Menu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f8f8f8;
+            color: #222;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            width: 115px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            transition: .3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 2px;
+            background: #d6a84f;
+            transition: .3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d6a84f;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .order-btn {
+            background: #f3262f;
+            color: white !important;
+            padding: 11px 20px;
+            border-radius: 7px;
+            transition: .3s ease;
+        }
+
+        .order-btn:hover {
+            background: #d91d25;
+            color: white !important;
+        }
+
+        .order-btn::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #222;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .menu-hero {
+            min-height: 350px;
+            padding: 130px 20px 70px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.62),
+                    rgba(0,0,0,.62)
+                ),
+                url("pasta.jpg") center / cover no-repeat;
+        }
+
+        .menu-hero-content {
+            max-width: 750px;
+            color: #fff;
+        }
+
+        .menu-hero h1 {
+            font-family: "Lucida Handwriting", cursive;
+            font-size: 52px;
+            margin-bottom: 15px;
+        }
+
+        .menu-hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #f3f3f3;
+        }
+
+        /* =========================
+           MENU SECTION
+        ========================= */
+
+        .menu-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 70px auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 550px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            background: #fff;
+            transition: .3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: #f3262f;
+            box-shadow: 0 0 0 3px rgba(243,38,47,.08);
+        }
+
+        /* =========================
+           CATEGORY BUTTONS
+        ========================= */
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 45px;
+        }
+
+        .category-btn {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+
+            padding: 10px 20px;
+            border-radius: 25px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .category-btn:hover {
+            border-color: #f3262f;
+            color: #f3262f;
+        }
+
+        .category-btn.active {
+            background: #f3262f;
+            color: #fff;
+            border-color: #f3262f;
+        }
+
+        /* =========================
+           FOOD GRID
+        ========================= */
+
+        .food-grid {
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .food-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow: 0 5px 25px rgba(0,0,0,.07);
+
+            transition: .3s ease;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.12);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .food-info {
+            padding: 20px;
+        }
+
+        .food-info h3 {
+            font-size: 19px;
+            margin-bottom: 7px;
+        }
+
+        .food-category {
+            display: inline-block;
+            font-size: 12px;
+            color: #f3262f;
+            background: rgba(243,38,47,.08);
+            padding: 4px 9px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .food-description {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #777;
+            margin-bottom: 18px;
+        }
+
+        .food-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .food-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .add-cart-btn {
+            border: none;
+            background: #f3262f;
+            color: #fff;
+
+            padding: 10px 15px;
+            border-radius: 7px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .add-cart-btn:hover {
+            background: #d91d25;
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           NO RESULTS
+        ========================= */
+
+        .no-results {
+            display: none;
+            text-align: center;
+            width: 100%;
+            padding: 40px 20px;
+            color: #777;
+            grid-column: 1 / -1;
+        }
+
+        /* =========================
+           CART BUTTON
+        ========================= */
+
+        .cart-floating {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+
+            width: 58px;
+            height: 58px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #f3262f;
+            color: #fff;
+
+            font-size: 22px;
+            cursor: pointer;
+
+            box-shadow: 0 8px 25px rgba(243,38,47,.3);
+
+            z-index: 1100;
+
+            transition: .3s ease;
+        }
+
+        .cart-floating:hover {
+            transform: scale(1.08);
+            background: #d91d25;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+
+            min-width: 22px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #222;
+            color: #fff;
+
+            border-radius: 50%;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           CART OVERLAY
+        ========================= */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,.5);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .3s ease;
+
+            z-index: 1200;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================
+           CART SIDEBAR
+        ========================= */
+
+        .cart-sidebar {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: 420px;
+            max-width: 100%;
+            height: 100%;
+
+            background: #fff;
+
+            transform: translateX(100%);
+            transition: .35s ease;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-overlay.active .cart-sidebar {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 22px;
+            border-bottom: 1px solid #eee;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-size: 21px;
+        }
+
+        .close-cart {
+            border: none;
+            background: transparent;
+
+            font-size: 28px;
+            cursor: pointer;
+
+            color: #555;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #777;
+            padding: 60px 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 70px;
+            height: 70px;
+
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #f3262f;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity-controls button {
+            width: 25px;
+            height: 25px;
+
+            border: 1px solid #ddd;
+            background: #fff;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+        }
+
+        .quantity-controls span {
+            font-size: 13px;
+            min-width: 15px;
+            text-align: center;
+        }
+
+        .remove-item {
+            border: none;
+            background: transparent;
+
+            color: #999;
+            font-size: 12px;
+
+            cursor: pointer;
+            margin-top: 7px;
+        }
+
+        .remove-item:hover {
+            color: #f3262f;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 18px;
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+
+            border: none;
+            background: #f3262f;
+            color: #fff;
+
+            padding: 14px;
+
+            border-radius: 7px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: #d91d25;
+        }
+
+        /* =========================
+           CHECKOUT MODAL
+        ========================= */
+
+        .checkout-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,.65);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .3s ease;
+
+            z-index: 1300;
+        }
+
+        .checkout-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .checkout-modal {
+            width: 100%;
+            max-width: 550px;
+
+            max-height: 90vh;
+            overflow-y: auto;
+
+            background: #fff;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            position: relative;
+        }
+
+        .checkout-modal h2 {
+            margin-bottom: 8px;
+        }
+
+        .checkout-modal > p {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .close-checkout {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+
+            border: none;
+            background: transparent;
+
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            border: 1px solid #ddd;
+            outline: none;
+
+            padding: 12px 14px;
+
+            border-radius: 7px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+
+            transition: .3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #f3262f;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .place-order-btn {
+            border: none;
+
+            background: #f3262f;
+            color: #fff;
+
+            padding: 14px;
+
+            border-radius: 7px;
+
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+        }
+
+        .place-order-btn:hover {
+            background: #d91d25;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 25px 5px;
+        }
+
+        .success-message .success-icon {
+            width: 60px;
+            height: 60px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(39,174,96,.12);
+            color: #27ae60;
+
+            font-size: 28px;
+        }
+
+        .success-message h3 {
+            margin-bottom: 8px;
+        }
+
+        .success-message p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+            position: fixed;
+
+            left: 50%;
+            bottom: 30px;
+
+            transform: translate(-50%, 100px);
+
+            background: #222;
+            color: #fff;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .3s ease;
+
+            z-index: 2000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #181818;
+            color: #fff;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .food-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .menu-hero h1 {
+                font-size: 44px;
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: 68px;
+            }
+
+            .logo img {
+                width: 100px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+
+                top: 68px;
+                left: 0;
+
+                width: 100%;
+
+                background: #fff;
+
+                display: none;
+                flex-direction: column;
+
+                padding: 25px 20px;
+
+                gap: 22px;
+
+                box-shadow: 0 10px 20px rgba(0,0,0,.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links .order-btn {
+                display: inline-block;
+            }
+
+            .menu-hero {
+                min-height: 320px;
+                padding-top: 110px;
+            }
+
+            .menu-hero h1 {
+                font-size: 36px;
+            }
+
+            .menu-hero p {
+                font-size: 14px;
+            }
+
+            .menu-section {
+                width: 92%;
+                margin: 50px auto;
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-image {
+                height: 230px;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+            }
+
+            .checkout-modal {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .category-buttons {
+                gap: 8px;
+            }
+
+            .category-btn {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+
+            .food-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .add-cart-btn {
+                width: 100%;
+            }
+
+            .cart-floating {
+                right: 18px;
+                bottom: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                <img src="Savora.png" alt="Savora Logo">
+            </a>
+
+            <div class="menu-toggle" id="menuToggle">
+                ☰
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">About</a>
+                </li>
+
+                <li>
+                    <a href="menu.html">Menu</a>
+                </li>
+
+                <li>
+                    <a href="index.html#contact">Contact</a>
+                </li>
+
+                <li>
+                    <a href="#" class="order-btn" onclick="openCart(); return false;">
+                        Order Now
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="menu-hero">
+
+        <div class="menu-hero-content">
+
+            <h1>Our Menu</h1>
+
+            <p>
+                Discover delicious meals prepared with fresh ingredients,
+                authentic flavors and the Savora touch.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MENU
+    ========================= -->
+
+    <main>
+
+        <section class="menu-section">
+
+            <div class="section-heading">
+
+                <h2>Explore Our Menu</h2>
+
+                <p>
+                    Choose from our selection of delicious meals and treats.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-container">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search for a meal..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- CATEGORIES -->
+
+            <div class="category-buttons">
+
+                <button
+                    class="category-btn active"
+                    data-category="snacks"
+                >
+                    Snacks
+                </button>
+
+                <button
+                    class="category-btn"
+                    data-category="swallows"
+                >
+                    Swallows
+                </button>
+
+                <button
+                    class="category-btn"
+                    data-category="soups"
+                >
+                    Soups
+                </button>
+
+                <button
+                    class="category-btn"
+                    data-category="rice"
+                >
+                    Rice
+                </button>
+
+                <button
+                    class="category-btn"
+                    data-category="pasta"
+                >
+                    Pasta
+                </button>
+
+                <button
+                    class="category-btn"
+                    data-category="drinks"
+                >
+                    Drinks
+                </button>
+
+            </div>
+
+
+            <!-- FOOD GRID -->
+
+            <div class="food-grid" id="foodGrid">
+
+
+                <!-- =========================
+                     SNACKS
+                ========================= -->
+
+                <article
+                    class="food-card"
+                    data-category="snacks"
+                    data-name="Savora Meat Pie"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Savora Meat Pie"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Snacks
+                        </span>
+
+                        <h3>Savora Meat Pie</h3>
+
+                        <p class="food-description">
+                            Delicious golden pastry filled with seasoned
+                            minced beef and vegetables.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Savora Meat Pie', 1500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="snacks"
+                    data-name="Chicken Pie"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Chicken Pie"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Snacks
+                        </span>
+
+                        <h3>Chicken Pie</h3>
+
+                        <p class="food-description">
+                            Crispy baked pastry filled with tasty seasoned
+                            chicken and vegetables.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Chicken Pie', 1500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="snacks"
+                    data-name="Puff Puff"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Puff Puff"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Snacks
+                        </span>
+
+                        <h3>Puff Puff</h3>
+
+                        <p class="food-description">
+                            Soft, fluffy and lightly sweet Nigerian-style
+                            puff puff served fresh.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,000
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Puff Puff', 1000, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     SWALLOWS
+                ========================= -->
+
+                <article
+                    class="food-card"
+                    data-category="swallows"
+                    data-name="Pounded Yam"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Pounded Yam"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Swallows
+                        </span>
+
+                        <h3>Pounded Yam</h3>
+
+                        <p class="food-description">
+                            Smooth and soft pounded yam served with your
+                            choice of delicious Nigerian soup.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦2,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Pounded Yam', 2500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="swallows"
+                    data-name="Eba"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Eba"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Swallows
+                        </span>
+
+                        <h3>Eba</h3>
+
+                        <p class="food-description">
+                            Smooth garri swallow prepared fresh and served
+                            with rich Nigerian soups.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Eba', 1500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="swallows"
+                    data-name="Fufu"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Fufu"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Swallows
+                        </span>
+
+                        <h3>Fufu</h3>
+
+                        <p class="food-description">
+                            Soft traditional fufu served with a flavorful
+                            Nigerian soup of your choice.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,800
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Fufu', 1800, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     SOUPS
+                ========================= -->
+
+                <article
+                    class="food-card"
+                    data-category="soups"
+                    data-name="Egusi Soup"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Egusi Soup"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Soups
+                        </span>
+
+                        <h3>Egusi Soup</h3>
+
+                        <p class="food-description">
+                            Rich Nigerian melon-seed soup prepared with
+                            vegetables and assorted ingredients.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦3,000
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Egusi Soup', 3000, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="soups"
+                    data-name="Afang Soup"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Afang Soup"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Soups
+                        </span>
+
+                        <h3>Afang Soup</h3>
+
+                        <p class="food-description">
+                            Traditional vegetable soup packed with rich
+                            African flavors and assorted ingredients.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦3,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Afang Soup', 3500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="soups"
+                    data-name="Ogbono Soup"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Ogbono Soup"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Soups
+                        </span>
+
+                        <h3>Ogbono Soup</h3>
+
+                        <p class="food-description">
+                            Thick and delicious Nigerian ogbono soup cooked
+                            with vegetables and assorted ingredients.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦3,000
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Ogbono Soup', 3000, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     RICE
+                ========================= -->
+
+                <article
+                    class="food-card"
+                    data-category="rice"
+                    data-name="Savora Jollof Rice"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Savora Jollof Rice"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Rice
+                        </span>
+
+                        <h3>Savora Jollof Rice</h3>
+
+                        <p class="food-description">
+                            Rich and flavorful Nigerian jollof rice cooked
+                            with our special Savora recipe.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦3,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Savora Jollof Rice', 3500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="rice"
+                    data-name="Ofada Rice"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Ofada Rice"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Rice
+                        </span>
+
+                        <h3>Ofada Special</h3>
+
+                        <p class="food-description">
+                            Authentic Ofada rice served with rich,
+                            spicy Nigerian sauce.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦4,000
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Ofada Special', 4000, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="rice"
+                    data-name="Savora Fried Rice"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Savora Fried Rice"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Rice
+                        </span>
+
+                        <h3>Savora Fried Rice</h3>
+
+                        <p class="food-description">
+                            Colorful fried rice prepared with vegetables
+                            and delicious Savora seasoning.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦4,000
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Savora Fried Rice', 4000, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     PASTA
+                ========================= -->
+
+                <article
+                    class="food-card"
+                    data-category="pasta"
+                    data-name="Savora Spaghetti"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Savora Spaghetti"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Pasta
+                        </span>
+
+                        <h3>Savora Spaghetti</h3>
+
+                        <p class="food-description">
+                            Delicious spaghetti prepared with fresh
+                            vegetables and Savora's special sauce.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦3,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Savora Spaghetti', 3500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="pasta"
+                    data-name="Creamy Pasta"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Creamy Pasta"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Pasta
+                        </span>
+
+                        <h3>Creamy Pasta</h3>
+
+                        <p class="food-description">
+                            Creamy and satisfying pasta cooked in a smooth
+                            and flavorful sauce.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦4,200
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Creamy Pasta', 4200, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     DRINKS
+                ========================= -->
+
+                <article
+                    class="food-card"
+                    data-category="drinks"
+                    data-name="Fresh Fruit Juice"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Fresh Fruit Juice"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Drinks
+                        </span>
+
+                        <h3>Fresh Fruit Juice</h3>
+
+                        <p class="food-description">
+                            Refreshing natural fruit juice made from
+                            freshly selected fruits.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Fresh Fruit Juice', 1500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="food-card"
+                    data-category="drinks"
+                    data-name="Savora Chapman"
+                >
+
+                    <img
+                        src="pasta.jpg"
+                        alt="Savora Chapman"
+                        class="food-image"
+                    >
+
+                    <div class="food-info">
+
+                        <span class="food-category">
+                            Drinks
+                        </span>
+
+                        <h3>Savora Chapman</h3>
+
+                        <p class="food-description">
+                            A refreshing Nigerian-style Chapman made with
+                            a delicious blend of fruity flavors.
+                        </p>
+
+                        <div class="food-bottom">
+
+                            <span class="food-price">
+                                ₦1,500
+                            </span>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Savora Chapman', 1500, 'pasta.jpg')"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <div class="no-results" id="noResults">
+                    No meals found. Try another search or category.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FLOATING CART
+    ========================= -->
+
+    <button
+        class="cart-floating"
+        onclick="openCart()"
+        aria-label="Open cart"
+    >
+
+        🛒
+
+        <span
+            class="cart-count"
+            id="cartCount"
+        >
+            0
+        </span>
+
+    </button>
+
+
+    <!-- =========================
+         CART OVERLAY
+    ========================= -->
+
+    <div
+        class="cart-overlay"
+        id="cartOverlay"
+        onclick="overlayCloseCart(event)"
+    >
+
+        <aside
+            class="cart-sidebar"
+            id="cartSidebar"
+        >
+
+            <div class="cart-header">
+
+                <h2>Your Cart</h2>
+
+                <button
+                    class="close-cart"
+                    onclick="closeCart()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                class="cart-items"
+                id="cartItems"
+            >
+
+                <div class="empty-cart">
+                    Your cart is empty.
+                </div>
+
+            </div>
+
+
+            <div class="cart-footer">
+
+                <div class="cart-total">
+
+                    <span>Total</span>
+
+                    <span id="cartTotal">
+                        ₦0
+                    </span>
+
+                </div>
+
+                <button
+                    class="checkout-btn"
+                    onclick="checkout()"
+                >
+                    Proceed to Checkout
+                </button>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- =========================
+         CHECKOUT
+    ========================= -->
+
+    <div
+        class="checkout-overlay"
+        id="checkoutOverlay"
+    >
+
+        <div class="checkout-modal">
+
+            <button
+                class="close-checkout"
+                onclick="closeCheckout()"
+            >
+                ×
+            </button>
+
+
+            <div id="checkoutContent">
+
+                <h2>Checkout</h2>
+
+                <p>
+                    Enter your delivery details to complete your order.
+                </p>
+
+
+                <form
+                    class="checkout-form"
+                    id="checkoutForm"
+                >
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Delivery Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            placeholder="Enter your delivery address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="notes">
+                            Order Notes
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            placeholder="Any special instructions? (Optional)"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="place-order-btn"
+                    >
+                        Place Order
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                class="success-message"
+                id="successMessage"
+            >
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Order Received!
+                </h3>
+
+                <p>
+                    Thank you for ordering from Savora.
+                    Your order details have been received successfully.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        Added to cart
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Savora. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           CART
+        ========================= */
+
+        let cart = [];
+
+
+        function addToCart(name, price, image) {
+
+            const existingItem = cart.find(
+                item => item.name === name
+            );
+
+            if (existingItem) {
+
+                existingItem.quantity++;
+
+            } else {
+
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+
+            }
+
+            updateCart();
+
+            showToast(name + " added to cart");
+
+        }
+
+
+        function updateCart() {
+
+            const cartItems = document.getElementById("cartItems");
+            const cartCount = document.getElementById("cartCount");
+            const cartTotal = document.getElementById("cartTotal");
+
+            cartItems.innerHTML = "";
+
+            let total = 0;
+            let itemCount = 0;
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        Your cart is empty.
+                    </div>
+                `;
+
+            }
+
+
+            cart.forEach((item, index) => {
+
+                const itemTotal =
+                    item.price * item.quantity;
+
+                total += itemTotal;
+
+                itemCount += item.quantity;
+
+
+                const cartItem =
+                    document.createElement("div");
+
+                cartItem.className = "cart-item";
+
+
+                cartItem.innerHTML = `
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                    <div class="cart-item-info">
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+                        <div class="cart-item-price">
+                            ₦${itemTotal.toLocaleString()}
+                        </div>
+
+                        <div class="quantity-controls">
+
+                            <button
+                                onclick="changeQuantity(${index}, -1)"
+                            >
+                                −
+                            </button>
+
+                            <span>
+                                ${item.quantity}
+                            </span>
+
+                            <button
+                                onclick="changeQuantity(${index}, 1)"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                        <button
+                            class="remove-item"
+                            onclick="removeFromCart(${index})"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+                `;
+
+
+                cartItems.appendChild(cartItem);
+
+            });
+
+
+            cartCount.textContent = itemCount;
+
+            cartTotal.textContent =
+                "₦" + total.toLocaleString();
+
+        }
+
+
+        function changeQuantity(index, change) {
+
+            cart[index].quantity += change;
+
+
+            if (cart[index].quantity <= 0) {
+
+                cart.splice(index, 1);
+
+            }
+
+
+            updateCart();
+
+        }
+
+
+        function removeFromCart(index) {
+
+            const removedItem =
+                cart[index].name;
+
+            cart.splice(index, 1);
+
+            updateCart();
+
+            showToast(
+                removedItem + " removed from cart"
+            );
+
+        }
+
+
+        /* =========================
+           CART OPEN / CLOSE
+        ========================= */
+
+        function openCart() {
+
+            document
+                .getElementById("cartOverlay")
+                .classList
+                .add("active");
+
+        }
+
+
+        function closeCart() {
+
+            document
+                .getElementById("cartOverlay")
+                .classList
+                .remove("active");
+
+        }
+
+
+        function overlayCloseCart(event) {
+
+            if (
+                event.target ===
+                document.getElementById("cartOverlay")
+            ) {
+
+                closeCart();
+
+            }
+
+        }
+
+
+        /* =========================
+           CHECKOUT
+        ========================= */
+
+        function checkout() {
+
+            if (cart.length === 0) {
+
+                showToast(
+                    "Your cart is empty"
+                );
+
+                return;
+
+            }
+
+
+            closeCart();
+
+
+            document
+                .getElementById("checkoutOverlay")
+                .classList
+                .add("active");
+
+        }
+
+
+        function closeCheckout() {
+
+            document
+                .getElementById("checkoutOverlay")
+                .classList
+                .remove("active");
+
+        }
+
+
+        document
+            .getElementById("checkoutForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    document
+                        .getElementById("checkoutContent")
+                        .style
+                        .display = "none";
+
+
+                    document
+                        .getElementById("successMessage")
+                        .style
+                        .display = "block";
+
+
+                    cart = [];
+
+                    updateCart();
+
+                }
+            );
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+
+        searchInput.addEventListener(
+            "input",
+            filterMenu
+        );
+
+
+        /* =========================
+           CATEGORY FILTER
+        ========================= */
+
+        const categoryButtons =
+            document.querySelectorAll(
+                ".category-btn"
+            );
+
+
+        let selectedCategory = "snacks";
+
+
+        categoryButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    categoryButtons.forEach(btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    selectedCategory =
+                        this.dataset.category;
+
+
+                    filterMenu();
+
+                }
+            );
+
+        });
+
+
+        /* =========================
+           FILTER MENU
+        ========================= */
+
+        function filterMenu() {
+
+            const searchTerm =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const foodCards =
+                document.querySelectorAll(
+                    ".food-card"
+                );
+
+
+            let visibleCount = 0;
+
+
+            foodCards.forEach(card => {
+
+                const category =
+                    card.dataset.category;
+
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
+
+
+                const categoryMatch =
+                    category === selectedCategory;
+
+
+                const searchMatch =
+                    name.includes(searchTerm);
+
+
+                if (
+                    categoryMatch &&
+                    searchMatch
+                ) {
+
+                    card.style.display =
+                        "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            });
+
+
+            const noResults =
+                document.getElementById(
+                    "noResults"
+                );
+
+
+            if (visibleCount === 0) {
+
+                noResults.style.display =
+                    "block";
+
+            } else {
+
+                noResults.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        let toastTimer;
+
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById(
+                    "toast"
+                );
+
+
+            toast.textContent =
+                message;
+
+
+            toast.classList.add(
+                "show"
+            );
+
+
+            clearTimeout(toastTimer);
+
+
+            toastTimer =
+                setTimeout(() => {
+
+                    toast.classList.remove(
+                        "show"
+                    );
+
+                }, 2500);
+
+        }
+
+
+        /* =========================
+           MOBILE NAVIGATION
+        ========================= */
+
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
+
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        menuToggle.addEventListener(
+            "click",
+            function() {
+
+                navLinks.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    function() {
+
+                        navLinks.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* =========================
+           INITIALIZE
+        ========================= */
+
+        updateCart();
+
+        filterMenu();
+
+    </script>
+
+</body>
+</html>
