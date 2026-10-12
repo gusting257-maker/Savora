@@ -2012,11 +2012,548 @@
             }
         }
 
-    </style>
+    
+/* =========================
+   LIGHT / DARK MODE
+========================= */
+.theme-toggle { width:44px; height:44px; border:none; border-radius:50%; background:rgba(255,255,255,.15); color:white; font-size:19px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.3s ease; backdrop-filter:blur(5px); }
+.theme-toggle:hover { transform:rotate(15deg) scale(1.05); background:rgba(214,168,79,.25); }
+header.scrolled .theme-toggle { background:#f3f3f3; color:#171717; }
+body.dark-mode { background:#111; color:#f5f5f5; }
+body.dark-mode .about, body.dark-mode .features, body.dark-mode .reviews, body.dark-mode .contact { background:#111; color:#f5f5f5; }
+body.dark-mode .feature-card, body.dark-mode .food-card, body.dark-mode .review-card { background:#1c1c1c; color:#f5f5f5; border-color:#2d2d2d; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+body.dark-mode .feature-card h3, body.dark-mode .food-card h3, body.dark-mode .review-card h3, body.dark-mode .review-author { color:#fff; }
+body.dark-mode .feature-card p, body.dark-mode .food-card p, body.dark-mode .review-text { color:#cfcfcf; }
+body.dark-mode .contact-form, body.dark-mode .review-form-wrapper { background:#1a1a1a; color:#fff; }
+body.dark-mode input, body.dark-mode textarea, body.dark-mode select { background:#222; color:#fff; border-color:#3a3a3a; }
+body.dark-mode input::placeholder, body.dark-mode textarea::placeholder { color:#999; }
+body.dark-mode .cart-sidebar { background:#171717; color:#fff; }
+body.dark-mode .cart-item { border-color:#333; }
+body.dark-mode .cart-item-name, body.dark-mode .cart-total { color:#fff; }
+body.dark-mode .checkout-modal { background:#171717; color:#fff; }
+body.dark-mode .checkout-modal input, body.dark-mode .checkout-modal textarea { background:#222; color:#fff; border-color:#3a3a3a; }
+body.dark-mode footer { background:#080808; }
+body.dark-mode header.scrolled { background:rgba(17,17,17,.97); box-shadow:0 4px 20px rgba(0,0,0,.35); }
+body.dark-mode header.scrolled .nav-links a:not(.order-btn) { color:#fff; }
+body.dark-mode header.scrolled .menu-toggle { color:#fff; }
+body.dark-mode header.scrolled .theme-toggle { background:#222; color:#fff; }
+@media (max-width:768px) { .theme-toggle { width:42px; height:42px; margin-top:10px; } }
+
+
+/* =========================
+   DARK MODE - BRIGHT GLASSMORPHISM
+========================= */
+
+body.dark-mode .featured-menu {
+    background: #111111;
+    color: #f5f5f5;
+}
+
+body.dark-mode .section-heading h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .section-heading p {
+    color: #cfcfcf;
+}
+
+/* Keep glass surfaces bright and visible in dark mode */
+body.dark-mode .feature-card,
+body.dark-mode .food-card,
+body.dark-mode .review-card,
+body.dark-mode .review-form-wrapper,
+body.dark-mode .contact-form,
+body.dark-mode .cart-sidebar,
+body.dark-mode .checkout-modal {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+body.dark-mode .feature-card:hover,
+body.dark-mode .food-card:hover,
+body.dark-mode .review-card:hover {
+    background: rgba(255, 255, 255, 0.13);
+    border-color: rgba(214, 168, 79, 0.65);
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+body.dark-mode .feature-icon,
+body.dark-mode .review-avatar {
+    background: rgba(243, 38, 47, 0.16);
+    border: 1px solid rgba(243, 38, 47, 0.25);
+}
+
+body.dark-mode .review-form-wrapper > p,
+body.dark-mode .checkout-subtitle,
+body.dark-mode .review-author small,
+body.dark-mode .contact-card p {
+    color: #c7c7c7;
+}
+
+body.dark-mode .review-form-wrapper h3,
+body.dark-mode .contact-form h3,
+body.dark-mode .checkout-modal h2,
+body.dark-mode .cart-header h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .cart-header,
+body.dark-mode .cart-item {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.dark-mode .cart-item-name,
+body.dark-mode .cart-total,
+body.dark-mode .cart-item-price,
+body.dark-mode .cart-quantity {
+    color: #ffffff;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea,
+body.dark-mode .review-field input,
+body.dark-mode .review-field textarea,
+body.dark-mode .review-field select,
+body.dark-mode .checkout-modal input,
+body.dark-mode .checkout-modal textarea,
+body.dark-mode .checkout-modal select {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder,
+body.dark-mode .review-field input::placeholder,
+body.dark-mode .review-field textarea::placeholder,
+body.dark-mode .checkout-modal input::placeholder,
+body.dark-mode .checkout-modal textarea::placeholder {
+    color: #b9b9b9;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus,
+body.dark-mode .review-field input:focus,
+body.dark-mode .review-field textarea:focus,
+body.dark-mode .review-field select:focus,
+body.dark-mode .checkout-modal input:focus,
+body.dark-mode .checkout-modal textarea:focus,
+body.dark-mode .checkout-modal select:focus {
+    border-color: #d6a84f;
+    box-shadow: 0 0 0 3px rgba(214, 168, 79, 0.16);
+}
+
+/* Bright glass look for the mobile/menu controls too */
+body.dark-mode .theme-toggle {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.20);
+}
+
+/* Make dark sections feel layered instead of flat */
+body.dark-mode .about,
+body.dark-mode .features,
+body.dark-mode .reviews,
+body.dark-mode .contact {
+    background: linear-gradient(135deg, #111111 0%, #171717 100%);
+}
+
+body.dark-mode .featured-menu {
+    background: linear-gradient(135deg, #101010 0%, #181818 100%);
+}
+
+/* Slightly brighter glass on the food information area */
+body.dark-mode .food-card > div:not(.food-image) {
+    background: rgba(255, 255, 255, 0.055);
+}
+
+/* Preserve readable text over bright glass */
+body.dark-mode .food-card h3,
+body.dark-mode .feature-card h3,
+body.dark-mode .review-card h3,
+body.dark-mode .review-author strong {
+    color: #ffffff;
+}
+
+body.dark-mode .food-card p,
+body.dark-mode .feature-card p,
+body.dark-mode .review-text {
+    color: #d2d2d2;
+}
+
+</style>
+<style>
+/* =========================
+   PHASE 7 — NAVIGATION + FOOTER
+========================= */
+.nav-links a.active-link:not(.order-btn) {
+    color: #d6a84f;
+}
+.nav-links a.active-link:not(.order-btn)::after {
+    width: 100%;
+}
+.savora-footer {
+    background: #111;
+    color: #fff;
+    padding-top: 70px;
+    overflow: hidden;
+}
+.footer-container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 50px;
+    padding-bottom: 55px;
+}
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+.footer-column h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+.footer-brand p {
+    max-width: 330px;
+    color: #bdbdbd;
+    line-height: 1.7;
+}
+.footer-logo { width: 125px; height: auto; display: block; margin-bottom: 5px; }
+.footer-column > a {
+    color: #bdbdbd;
+    text-decoration: none;
+    transition: .3s ease;
+}
+.footer-column > a:hover, .footer-column > a.active-footer-link {
+    color: #d6a84f;
+    transform: translateX(4px);
+}
+.footer-column > p { color: #bdbdbd; line-height: 1.5; }
+.footer-socials { display:flex; gap:10px; margin-top:8px; }
+.footer-socials a {
+    width: 38px; height: 38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: rgba(255,255,255,.08); color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+    text-decoration:none; font-size:12px; font-weight:600;
+    transition:.3s ease;
+}
+.footer-socials a:hover { background:#f3262f; border-color:#f3262f; transform:translateY(-3px); }
+.footer-bottom {
+    width:92%; max-width:1200px; margin:0 auto;
+    border-top:1px solid rgba(255,255,255,.12);
+    padding:22px 0; display:flex; justify-content:space-between; gap:20px;
+    color:#999; font-size:13px;
+}
+.back-to-top {
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    padding:0;
+    margin:0;
+    border:0;
+    border-radius:50%;
+    background:#f3262f;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    font-size:26px;
+    font-weight:700;
+    line-height:1;
+    text-align:center;
+    cursor:pointer;
+    z-index:1200;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+    transition:opacity .3s ease,visibility .3s ease,transform .3s ease,background .3s ease;
+    box-shadow:0 10px 25px rgba(243,38,47,.35);
+}
+.back-to-top.show { opacity:1; visibility:visible; transform:translateY(0); }
+.back-to-top:hover { background:#d91d25; transform:translateY(-3px); }
+.back-to-top:focus { outline:none; }
+.back-to-top:active { transform:scale(.95); }
+body.dark-mode .savora-footer { background:#080808; }
+body.dark-mode .nav-links a.active-link:not(.order-btn) { color:#d6a84f; }
+@media (max-width:900px) {
+    .footer-container { grid-template-columns:repeat(2,1fr); gap:40px 30px; }
+}
+@media (max-width:600px) {
+    .footer-container { grid-template-columns:1fr; gap:32px; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+    .back-to-top { right:18px; bottom:18px; width:46px; height:46px; font-size:24px; }
+}
+</style>
+
+<style id="savora-toast-fix">
+#toast {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: 30px !important;
+    transform: translate(-50%, 100px) !important;
+    background: #171717 !important;
+    color: #fff !important;
+    padding: 13px 20px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    z-index: 99999 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity .35s ease, transform .35s ease, visibility .35s ease !important;
+}
+#toast.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%, 0) !important;
+}
+
+
+/* =========================================================
+   PHASE 8 — FRONTEND UX & POLISH
+   ========================================================= */
+
+/* Better keyboard focus */
+:where(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid rgba(214, 168, 79, .55);
+    outline-offset: 3px;
+}
+
+/* Prevent accidental text selection on controls */
+button,
+.category-btn,
+.add-cart,
+.add-cart-btn,
+.cart-floating,
+.theme-toggle {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth card/section reveal */
+.phase8-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .55s ease, transform .55s ease;
+}
+
+.phase8-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Improved toast */
+#toast {
+    max-width: min(420px, calc(100vw - 32px));
+    text-align: center;
+    line-height: 1.45;
+    pointer-events: none;
+}
+
+#toast.show {
+    transform: translate(-50%, 0);
+}
+
+/* Search result helper */
+.phase8-search-tools {
+    width: min(550px, 100%);
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.phase8-search-tools .search-box {
+    max-width: none;
+    margin: 0;
+}
+
+.phase8-clear-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+    place-items: center;
+}
+
+.phase8-clear-search:hover {
+    background: rgba(243, 38, 47, .10);
+    color: #f3262f;
+}
+
+.phase8-result-count {
+    margin: -18px auto 28px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+}
+
+body.dark-mode .phase8-result-count {
+    color: #cfcfcf;
+}
+
+body.dark-mode .phase8-clear-search {
+    color: #ddd;
+}
+
+body.dark-mode .phase8-clear-search:hover {
+    background: rgba(255,255,255,.12);
+    color: #fff;
+}
+
+/* Better empty cart */
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    gap: 8px;
+}
+
+.empty-cart::before {
+    content: "🛒";
+    font-size: 38px;
+    opacity: .7;
+}
+
+/* Cart quantity controls */
+.quantity-controls button {
+    transition: .2s ease;
+}
+
+.quantity-controls button:hover {
+    border-color: #f3262f;
+    color: #f3262f;
+    transform: scale(1.06);
+}
+
+/* Better disabled/loading buttons */
+.phase8-loading {
+    pointer-events: none !important;
+    opacity: .65;
+}
+
+.phase8-loading::after {
+    content: "  •••";
+    letter-spacing: 2px;
+}
+
+/* Validation */
+.phase8-invalid {
+    border-color: #f3262f !important;
+    box-shadow: 0 0 0 3px rgba(243,38,47,.10) !important;
+}
+
+.phase8-field-error {
+    display: block;
+    margin-top: 5px;
+    color: #f3262f;
+    font-size: 11px;
+}
+
+/* Mobile improvements */
+@media (max-width: 700px) {
+    body.phase8-menu-open {
+        overflow: hidden;
+    }
+
+    .phase8-reveal {
+        transform: translateY(12px);
+    }
+
+    .cart-sidebar {
+        width: 100% !important;
+    }
+
+    .checkout-modal {
+        max-height: calc(100vh - 24px);
+    }
+}
+
+/* Respect accessibility preference */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    .phase8-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+</style>
+
+<style>
+/* ========================= PHASE 9 — ADVANCED FRONTEND ========================= */
+.phase9-tools{position:fixed;left:25px;bottom:25px;z-index:9998;display:flex;gap:10px}
+.phase9-tools button{border:1px solid rgba(243,38,47,.25);background:#fff;color:#222;border-radius:999px;padding:12px 17px;font-weight:700;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.12);transition:.25s}
+.phase9-tools button:hover{transform:translateY(-3px);background:#f3262f;color:#fff}
+body.dark-mode .phase9-tools button{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3);backdrop-filter:blur(12px)}
+.phase9-modal{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;padding:20px;z-index:10001}
+.phase9-modal.active{display:flex}
+.phase9-panel{width:min(760px,100%);max-height:88vh;overflow:auto;background:#fff;border-radius:22px;padding:28px;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+body.dark-mode .phase9-panel{background:rgba(28,28,28,.9);color:#fff;backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.2)}
+.phase9-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}
+.phase9-head h2{margin:0}.phase9-close{border:0;background:transparent;font-size:28px;cursor:pointer;color:inherit}
+.phase9-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.phase9-tab{border:1px solid #ddd;background:#f7f7f7;padding:9px 14px;border-radius:999px;cursor:pointer;font-weight:600}.phase9-tab.active{background:#f3262f;color:#fff;border-color:#f3262f}
+body.dark-mode .phase9-tab{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff}
+.phase9-card{border:1px solid #e5e5e5;border-radius:16px;padding:16px;margin:12px 0;background:#fff}.phase9-card h3{margin:0 0 7px}.phase9-card p{margin:5px 0;color:#666}.phase9-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.phase9-action{border:0;background:#f3262f;color:#fff;padding:9px 13px;border-radius:9px;cursor:pointer;font-weight:600}.phase9-action.secondary{background:#222}
+body.dark-mode .phase9-card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}body.dark-mode .phase9-card p{color:#ccc}
+.phase9-empty{text-align:center;padding:35px 10px;color:#777}.phase9-progress{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:16px}.phase9-step{padding:10px 5px;border-radius:10px;background:#eee;text-align:center;font-size:12px;font-weight:700}.phase9-step.done,.phase9-step.current{background:#f3262f;color:#fff}.favorite-toggle{position:absolute;right:10px;top:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;font-size:20px;z-index:3}.food-card{position:relative}.favorite-toggle.active{color:#f3262f}
+@media(max-width:600px){.phase9-tools{left:15px;bottom:15px}.phase9-tools button{padding:10px 12px}.phase9-panel{padding:20px}.phase9-progress{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 
 
 <body>
+<div class="phase9-tools"><button id="savoraAccountBtn" type="button">♡ My Savora</button></div>
+<div class="phase9-modal" id="phase9Modal" aria-hidden="true">
+ <div class="phase9-panel" role="dialog" aria-modal="true" aria-labelledby="phase9Title">
+  <div class="phase9-head"><h2 id="phase9Title">My Savora</h2><button class="phase9-close" id="phase9Close" aria-label="Close">×</button></div>
+  <div class="phase9-tabs"><button class="phase9-tab active" data-tab="favorites">❤️ Favorites</button><button class="phase9-tab" data-tab="history">🧾 Orders</button><button class="phase9-tab" data-tab="recent">🕘 Recently Ordered</button><button class="phase9-tab" data-tab="tracking">📦 Track Order</button></div>
+  <div id="phase9Content"></div>
+ </div>
+</div>
+
 
 
     <!-- =========================
@@ -2071,6 +2608,8 @@
                 >
                     Order Now
                 </a>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 
             </div>
 
@@ -2960,97 +3499,46 @@
          FOOTER
     ========================= -->
 
-    <footer>
-
-        <div class="section-container">
-
-
-            <div class="footer-grid">
-
-
-                <div class="footer-brand">
-
-                    <img
-                        src="Savora.png"
-                        alt="Savora Logo"
-                    >
-
-                    <p>
-                        Savora brings delicious meals, quality
-                        ingredients and unforgettable flavours
-                        straight to food lovers.
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Quick Links
-                    </h3>
-
-
-                    <div class="footer-links">
-
-                        <a href="#home">
-                            Home
-                        </a>
-
-                        <a href="#about">
-                            About
-                        </a>
-
-                        <a href="menu.html">
-                            Menu
-                        </a>
-
-                        <a href="#contact">
-                            Contact
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Contact
-                    </h3>
-
-
-                    <div class="footer-contact">
-
-                        <span>
-                            📍 Lagos, Nigeria
-                        </span>
-
-                        <span>
-                            📞 +234 800 000 0000
-                        </span>
-
-                        <span>
-                            ✉ hello@savora.com
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="copyright">
-
-                © 2026 Savora. All Rights Reserved.
-
-            </div>
-
-        </div>
-
-    </footer>
+    <footer class="savora-footer">
+  <div class="footer-container">
+    <div class="footer-column footer-brand">
+      <img src="Savora.png" alt="Savora Logo" class="footer-logo">
+      <p>Good food, great moments and unforgettable flavours. Savora brings delicious meals to every table.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="TikTok">tk</a>
+        <a href="#" aria-label="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-column">
+      <h3>Customer</h3>
+      <a href="menu.html">Order Now</a>
+      <a href="menu.html">Delivery</a>
+      <a href="menu.html">Pickup</a>
+      <a href="#reviews">Leave a Review</a>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p>📞 +234 800 000 0000</p>
+      <p>✉️ hello@savora.com</p>
+      <p>📍 Lagos, Nigeria</p>
+      <p>🕐 Mon – Sun: 9AM – 10PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="footerYear"></span> Savora. All Rights Reserved.</p>
+    <p>Made with ❤️ for food lovers.</p>
+  </div>
+</footer>
 
 
     <!-- =========================
@@ -4014,7 +4502,519 @@
 
         updateCart();
 
-    </script>
+    
+/* =========================
+   LIGHT / DARK MODE
+========================= */
+const themeToggle = document.getElementById("themeToggle");
+const savedTheme = localStorage.getItem("savoraTheme");
+if (savedTheme === "dark") { document.body.classList.add("dark-mode"); if (themeToggle) themeToggle.textContent="☀️"; }
+if (themeToggle) { themeToggle.addEventListener("click", () => { document.body.classList.toggle("dark-mode"); const isDark=document.body.classList.contains("dark-mode"); themeToggle.textContent=isDark ? "☀️" : "🌙"; localStorage.setItem("savoraTheme", isDark ? "dark" : "light"); }); }
+</script>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
+
+
+<script>
+
+
+/* =========================
+   PHASE 7 — NAVIGATION BEHAVIOUR
+========================= */
+(function () {
+    const header = document.getElementById("header");
+    const navLinks = document.getElementById("navLinks");
+    const menuToggle = document.getElementById("menuToggle");
+    const backToTop = document.getElementById("backToTop");
+    const footerYear = document.getElementById("footerYear");
+
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    if (menuToggle && navLinks) {
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => navLinks.classList.remove("active"));
+        });
+    }
+
+    window.addEventListener("scroll", () => {
+        if (header) {
+            if (window.scrollY > 40) header.classList.add("scrolled");
+            else header.classList.remove("scrolled");
+        }
+        if (backToTop) {
+            if (window.scrollY > 400) backToTop.classList.add("show");
+            else backToTop.classList.remove("show");
+        }
+    });
+
+    if (backToTop) {
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    const path = window.location.pathname.toLowerCase();
+    const isMenuPage = path.endsWith("/menu.html") || path.endsWith("menu.html");
+    const navAnchors = document.querySelectorAll(".nav-links a");
+    navAnchors.forEach(link => {
+        const href = (link.getAttribute("href") || "").toLowerCase();
+        if (link.classList.contains("order-btn")) return;
+        if (isMenuPage && href === "menu.html") link.classList.add("active-link");
+        if (!isMenuPage && href === "#home") link.classList.add("active-link");
+    });
+})();
+</script>
+
+
+
+<script>
+/* =========================================================
+   PHASE 8 — FRONTEND UX & POLISH
+   No backend. Uses localStorage only.
+   ========================================================= */
+(function () {
+    "use strict";
+
+    const STORAGE_KEY = "savoraCart";
+    const body = document.body;
+
+    /* ---------------------------------------------------------
+       CART PERSISTENCE
+       --------------------------------------------------------- */
+    function readSavedCart() {
+        try {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            return Array.isArray(saved) ? saved : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveCart() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+        } catch (error) {
+            /* Storage can fail in private/restricted browser modes. */
+        }
+    }
+
+    if (typeof cart !== "undefined") {
+        const savedCart = readSavedCart();
+        if (savedCart.length) {
+            cart = savedCart;
+            if (typeof updateCart === "function") updateCart();
+        }
+
+        if (typeof updateCart === "function") {
+            const originalUpdateCart = updateCart;
+            updateCart = function () {
+                originalUpdateCart();
+                saveCart();
+                improveCartAccessibility();
+            };
+        }
+
+        ["addToCart", "changeQuantity", "removeFromCart"].forEach(function (name) {
+            if (typeof window[name] === "function") {
+                const original = window[name];
+                window[name] = function () {
+                    const result = original.apply(this, arguments);
+                    saveCart();
+                    return result;
+                };
+            }
+        });
+
+        saveCart();
+    }
+
+    /* ---------------------------------------------------------
+       CART ACCESSIBILITY
+       --------------------------------------------------------- */
+    function improveCartAccessibility() {
+        document.querySelectorAll(".quantity-controls button").forEach(function (button) {
+            const text = button.textContent.trim();
+            if (text === "+") button.setAttribute("aria-label", "Increase quantity");
+            if (text === "−" || text === "-") button.setAttribute("aria-label", "Decrease quantity");
+        });
+
+        document.querySelectorAll(".remove-item").forEach(function (button) {
+            button.setAttribute("aria-label", "Remove item from cart");
+        });
+
+        document.querySelectorAll(".close-cart, .close-checkout").forEach(function (button) {
+            button.setAttribute("aria-label", "Close");
+        });
+    }
+
+    /* ---------------------------------------------------------
+       TOAST ACCESSIBILITY
+       --------------------------------------------------------- */
+    const toast = document.getElementById("toast");
+    if (toast) {
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        toast.setAttribute("aria-atomic", "true");
+    }
+
+    /* ---------------------------------------------------------
+       MOBILE NAVIGATION LOCK + ESCAPE SUPPORT
+       --------------------------------------------------------- */
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function syncMenuState() {
+        if (!navLinks) return;
+        const open = navLinks.classList.contains("active");
+        body.classList.toggle("phase8-menu-open", open);
+
+        if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", String(open));
+        }
+    }
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", function () {
+            setTimeout(syncMenuState, 0);
+        });
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                syncMenuState();
+            });
+        });
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key !== "Escape") return;
+
+        if (navLinks) navLinks.classList.remove("active");
+        body.classList.remove("phase8-menu-open");
+
+        const cartOverlay = document.getElementById("cartOverlay");
+        const checkoutOverlay = document.getElementById("checkoutOverlay");
+
+        if (cartOverlay) cartOverlay.classList.remove("active");
+        if (checkoutOverlay) checkoutOverlay.classList.remove("active");
+    });
+
+    /* ---------------------------------------------------------
+       BETTER MENU SEARCH
+       --------------------------------------------------------- */
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchInput) {
+        const searchContainer = searchInput.closest(".search-container");
+        const wrapper = document.createElement("div");
+        wrapper.className = "phase8-search-tools";
+
+        if (searchContainer) {
+            searchContainer.parentNode.insertBefore(wrapper, searchContainer);
+            wrapper.appendChild(searchContainer);
+        }
+
+        const clearButton = document.createElement("button");
+        clearButton.type = "button";
+        clearButton.className = "phase8-clear-search";
+        clearButton.innerHTML = "×";
+        clearButton.setAttribute("aria-label", "Clear menu search");
+        clearButton.title = "Clear search";
+
+        const searchBox = searchInput.closest(".search-box");
+        if (searchBox) searchBox.appendChild(clearButton);
+
+        const resultCount = document.createElement("div");
+        resultCount.className = "phase8-result-count";
+        resultCount.setAttribute("aria-live", "polite");
+
+        if (wrapper.parentNode) {
+            wrapper.parentNode.insertBefore(resultCount, wrapper.nextSibling);
+        }
+
+        function updateSearchUI() {
+            const value = searchInput.value.trim();
+            clearButton.style.display = value ? "grid" : "none";
+
+            const cards = Array.from(document.querySelectorAll(".food-card"));
+            const visible = cards.filter(function (card) {
+                return getComputedStyle(card).display !== "none";
+            }).length;
+
+            if (cards.length) {
+                resultCount.textContent =
+                    visible + (visible === 1 ? " item" : " items") + " shown";
+            }
+        }
+
+        searchInput.addEventListener("input", function () {
+            setTimeout(updateSearchUI, 0);
+        });
+
+        clearButton.addEventListener("click", function () {
+            searchInput.value = "";
+            searchInput.focus();
+            searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+            if (typeof filterMenu === "function") filterMenu();
+            updateSearchUI();
+        });
+
+        if (typeof filterMenu === "function") {
+            const originalFilterMenu = filterMenu;
+            filterMenu = function () {
+                originalFilterMenu();
+                updateSearchUI();
+            };
+        }
+
+        updateSearchUI();
+    }
+
+    /* ---------------------------------------------------------
+       FORM VALIDATION POLISH
+       --------------------------------------------------------- */
+    function addValidation(form, rules) {
+        if (!form) return;
+
+        form.addEventListener("submit", function (event) {
+            let valid = true;
+
+            Object.keys(rules).forEach(function (id) {
+                const field = document.getElementById(id);
+                if (!field) return;
+
+                field.classList.remove("phase8-invalid");
+                field.removeAttribute("aria-invalid");
+
+                const existing = field.parentElement.querySelector(".phase8-field-error");
+                if (existing) existing.remove();
+
+                const value = field.value.trim();
+                const rule = rules[id];
+                let message = "";
+
+                if (rule.required && !value) {
+                    message = rule.requiredMessage || "This field is required.";
+                } else if (value && rule.pattern && !rule.pattern.test(value)) {
+                    message = rule.patternMessage || "Please enter a valid value.";
+                }
+
+                if (message) {
+                    valid = false;
+                    field.classList.add("phase8-invalid");
+                    field.setAttribute("aria-invalid", "true");
+
+                    const error = document.createElement("small");
+                    error.className = "phase8-field-error";
+                    error.textContent = message;
+                    field.parentElement.appendChild(error);
+                }
+            });
+
+            if (!valid) {
+                event.preventDefault();
+                const firstInvalid = form.querySelector(".phase8-invalid");
+                if (firstInvalid) firstInvalid.focus();
+            }
+        });
+
+        form.querySelectorAll("input, textarea, select").forEach(function (field) {
+            field.addEventListener("input", function () {
+                field.classList.remove("phase8-invalid");
+                field.removeAttribute("aria-invalid");
+
+                const error = field.parentElement.querySelector(".phase8-field-error");
+                if (error) error.remove();
+            });
+        });
+    }
+
+    addValidation(document.getElementById("contactForm"), {
+        contactName: {
+            required: true,
+            requiredMessage: "Please enter your name."
+        },
+        contactEmail: {
+            required: true,
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            patternMessage: "Please enter a valid email address."
+        },
+        contactMessage: {
+            required: true,
+            requiredMessage: "Please enter your message."
+        }
+    });
+
+    addValidation(document.getElementById("reviewForm"), {
+        reviewName: {
+            required: true,
+            requiredMessage: "Please enter your name."
+        },
+        reviewRating: {
+            required: true,
+            requiredMessage: "Please select a rating."
+        },
+        reviewMessage: {
+            required: true,
+            requiredMessage: "Please write your review."
+        }
+    });
+
+    addValidation(document.getElementById("checkoutForm"), {
+        fullName: {
+            required: true,
+            requiredMessage: "Please enter your full name."
+        },
+        phone: {
+            required: true,
+            pattern: /^(?:\+234|0)[789]\d{9}$/,
+            patternMessage: "Enter a valid Nigerian phone number."
+        },
+        address: {
+            required: false
+        },
+        customerName: {
+            required: true,
+            requiredMessage: "Please enter your full name."
+        },
+        customerPhone: {
+            required: true,
+            pattern: /^(?:\+234|0)[789]\d{9}$/,
+            patternMessage: "Enter a valid Nigerian phone number."
+        },
+        deliveryAddress: {
+            required: false
+        }
+    });
+
+    /* ---------------------------------------------------------
+       REVEAL ANIMATION
+       --------------------------------------------------------- */
+    const revealTargets = document.querySelectorAll(
+        ".about, .features, .featured-menu, .reviews, .contact, " +
+        ".food-card, .feature-card, .review-card, .contact-card, " +
+        ".review-form-wrapper, .contact-form"
+    );
+
+    revealTargets.forEach(function (element) {
+        element.classList.add("phase8-reveal");
+    });
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        revealTargets.forEach(function (element) {
+            observer.observe(element);
+        });
+    } else {
+        revealTargets.forEach(function (element) {
+            element.classList.add("is-visible");
+        });
+    }
+
+    /* ---------------------------------------------------------
+       BUTTON FEEDBACK
+       --------------------------------------------------------- */
+    document.addEventListener("click", function (event) {
+        const button = event.target.closest(
+            ".add-cart, .add-cart-btn, .checkout-btn, " +
+            ".place-order-btn, .review-submit, .submit-btn"
+        );
+
+        if (!button || button.disabled) return;
+
+        button.classList.add("phase8-loading");
+
+        window.setTimeout(function () {
+            button.classList.remove("phase8-loading");
+        }, 450);
+    });
+
+    /* ---------------------------------------------------------
+       ACCESSIBLE LABELS FOR ICON/UTILITY CONTROLS
+       --------------------------------------------------------- */
+    const cartButtons = document.querySelectorAll(
+        "#cartButton, #cartFloating, .cart-button, .cart-floating"
+    );
+
+    cartButtons.forEach(function (button) {
+        if (!button.getAttribute("aria-label")) {
+            button.setAttribute("aria-label", "Open shopping cart");
+        }
+    });
+
+    if (menuToggle) {
+        menuToggle.setAttribute(
+            "aria-label",
+            menuToggle.getAttribute("aria-label") || "Open navigation menu"
+        );
+        menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    /* ---------------------------------------------------------
+       THEME STATE
+       --------------------------------------------------------- */
+    const themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+        themeToggle.setAttribute("aria-label", "Toggle light and dark mode");
+    }
+
+    /* ---------------------------------------------------------
+       FINAL SYNC
+       --------------------------------------------------------- */
+    if (typeof improveCartAccessibility === "function") {
+        improveCartAccessibility();
+    }
+})();
+</script>
+
+
+<script>
+/* ========================= PHASE 9 — ADVANCED FRONTEND ========================= */
+(function(){
+ const FAV_KEY='savoraFavorites', HIST_KEY='savoraOrderHistory', LAST_KEY='savoraLastOrder';
+ const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+ const read=(k,d=[])=>{try{const x=JSON.parse(localStorage.getItem(k));return x??d}catch(e){return d}};
+ const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+ const money=n=>'₦'+Number(n||0).toLocaleString();
+ let favorites=read(FAV_KEY,[]), history=read(HIST_KEY,[]);
+ const modal=$('#phase9Modal'), content=$('#phase9Content');
+ function openModal(){modal.classList.add('active');modal.setAttribute('aria-hidden','false');render('favorites')}
+ function closeModal(){modal.classList.remove('active');modal.setAttribute('aria-hidden','true')}
+ $('#savoraAccountBtn')?.addEventListener('click',openModal); $('#phase9Close')?.addEventListener('click',closeModal); modal?.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+ function productFromCard(card){return {name:card.querySelector('h3')?.textContent.trim()||'Savora Meal',price:Number((card.querySelector('.food-price')?.textContent||'0').replace(/[^0-9]/g,'')),image:card.querySelector('img')?.getAttribute('src')||'pasta.jpg'}}
+ function syncFavoriteButtons(){ $$('.food-card').forEach(card=>{if(card.querySelector('.favorite-toggle'))return;let p=productFromCard(card);let b=document.createElement('button');b.className='favorite-toggle';b.type='button';b.innerHTML=favorites.some(x=>x.name===p.name)?'♥':'♡';b.classList.toggle('active',favorites.some(x=>x.name===p.name));b.title='Add to favorites';b.setAttribute('aria-label','Add '+p.name+' to favorites');b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFavorite(p,b)});card.appendChild(b)})}
+ function toggleFavorite(p,b){let i=favorites.findIndex(x=>x.name===p.name);if(i>=0)favorites.splice(i,1);else favorites.push(p);write(FAV_KEY,favorites);b.innerHTML=i>=0?'♡':'♥';b.classList.toggle('active',i<0);render('favorites')}
+ syncFavoriteButtons();
+ function render(tab){
+   $$('.phase9-tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+   if(tab==='favorites') renderFavorites(); else if(tab==='history') renderHistory(); else if(tab==='recent') renderRecent(); else renderTracking();
+ }
+ $$('.phase9-tab').forEach(b=>b.addEventListener('click',()=>render(b.dataset.tab)));
+ function card(p,actions=''){return `<div class="phase9-card"><h3>${escapeHtml(p.name)}</h3><p>${money(p.price)}${p.quantity?` × ${p.quantity}`:''}</p>${actions?`<div class="phase9-actions">${actions}</div>`:''}</div>`}
+ function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+ function renderFavorites(){if(!favorites.length){content.innerHTML='<div class="phase9-empty">No favorites yet. Tap ♡ on any meal to save it here.</div>';return}content.innerHTML=favorites.map((p,i)=>card(p,`<button class="phase9-action" data-orderfav="${i}">Add to Cart</button><button class="phase9-action secondary" data-removefav="${i}">Remove</button>`)).join('');$$('[data-orderfav]').forEach(b=>b.onclick=()=>{let p=favorites[+b.dataset.orderfav];if(typeof window.addToCart==='function'){window.addToCart(p.name,p.price,p.image);showToast?.(p.name+' added to cart')} });$$('[data-removefav]').forEach(b=>b.onclick=()=>{favorites.splice(+b.dataset.removefav,1);write(FAV_KEY,favorites);syncFavoriteButtons();renderFavorites()})}
+ function renderHistory(){if(!history.length){content.innerHTML='<div class="phase9-empty">No orders yet. Your completed Savora orders will appear here.</div>';return}content.innerHTML=history.map((o,i)=>`<div class="phase9-card"><h3>${escapeHtml(o.reference)}</h3><p>${new Date(o.createdAt).toLocaleString()} • ${o.orderType==='delivery'?'🚚 Delivery':'🏪 Pickup'}</p><p>${o.items.map(x=>escapeHtml(x.name)+' × '+x.quantity).join(', ')}</p><p><strong>${money(o.total)}</strong></p><div class="phase9-actions"><button class="phase9-action" data-reorder="${i}">Order Again</button><button class="phase9-action secondary" data-receipt="${i}">Receipt</button><button class="phase9-action secondary" data-track="${i}">Track</button></div></div>`).join('');$$('[data-reorder]').forEach(b=>b.onclick=()=>{history[+b.dataset.reorder].items.forEach(x=>window.addToCart?.(x.name,x.price,'pasta.jpg'));showToast?.('Items added to cart')});$$('[data-receipt]').forEach(b=>printReceipt(history[+b.dataset.receipt]));$$('[data-track]').forEach(b=>b.onclick=()=>{localStorage.setItem('savoraTrackingRef',history[+b.dataset.track].reference);renderTracking()})}
+ function renderRecent(){let map={};history.flatMap(o=>o.items).forEach(x=>map[x.name]={name:x.name,price:x.price,image:'pasta.jpg'});let a=Object.values(map).slice(-8).reverse();content.innerHTML=a.length?a.map((p,i)=>card(p,`<button class="phase9-action" data-recent="${i}">Order Again</button>`)).join(''):'<div class="phase9-empty">Your recently ordered meals will appear here.</div>';$$('[data-recent]').forEach(b=>b.onclick=()=>{let p=a[+b.dataset.recent];window.addToCart?.(p.name,p.price,p.image);showToast?.('Added to cart')})}
+ function statusFor(o){let mins=(Date.now()-new Date(o.createdAt).getTime())/60000;return mins<1?0:mins<3?1:mins<6?2:3}
+ function renderTracking(){let ref=localStorage.getItem('savoraTrackingRef')||history[0]?.reference;let o=history.find(x=>x.reference===ref)||read(LAST_KEY,null);if(!o){content.innerHTML='<div class="phase9-empty">Place an order first to see its simulated tracking status.</div>';return}let s=statusFor(o), labels=['Order Received','Preparing','Ready','Completed'];content.innerHTML=`<div class="phase9-card"><h3>${escapeHtml(o.reference)}</h3><p>${o.orderType==='delivery'?'🚚 Delivery':'🏪 Pickup'} • ${money(o.total)}</p><div class="phase9-progress">${labels.map((x,i)=>`<div class="phase9-step ${i<=s?'done':''} ${i===s?'current':''}">${x}</div>`).join('')}</div><p style="margin-top:15px"><strong>${labels[s]}</strong></p><div class="phase9-actions"><button class="phase9-action" id="refreshTracking">Refresh Status</button><button class="phase9-action secondary" id="trackingReceipt">Print Receipt</button></div></div>`;$('#refreshTracking').onclick=()=>renderTracking();$('#trackingReceipt').onclick=()=>printReceipt(o)}
+ function printReceipt(o){let w=window.open('','_blank','width=600,height=750');if(!w)return;w.document.write(`<html><head><title>${o.reference} - Savora Receipt</title><style>body{font-family:Arial;padding:30px;max-width:520px;margin:auto}h1{color:#f3262f}hr{border:0;border-top:1px solid #ddd;margin:18px 0}.row{display:flex;justify-content:space-between;margin:8px 0}.total{font-size:20px;font-weight:bold}</style></head><body><h1>SAVORA</h1><p>Order Receipt — ${o.reference}</p><hr>${o.items.map(x=>`<div class="row"><span>${escapeHtml(x.name)} × ${x.quantity}</span><span>${money(x.price*x.quantity)}</span></div>`).join('')}<hr><div class="row"><span>Subtotal</span><span>${money(o.subtotal)}</span></div><div class="row"><span>Delivery</span><span>${money(o.deliveryFee)}</span></div><div class="row total"><span>Total</span><span>${money(o.total)}</span></div><p>Customer: ${escapeHtml(o.customer.name)}<br>Phone: ${escapeHtml(o.customer.phone)}</p><p>Thank you for choosing Savora ❤️</p><script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close()}
+ // Capture completed orders without changing existing checkout flow.
+ const originalSetItem=localStorage.setItem.bind(localStorage);
+ // Poll for the existing savoraLastOrder so the original Phase 6B checkout remains untouched.
+ let known=localStorage.getItem(LAST_KEY);
+ setInterval(()=>{let now=localStorage.getItem(LAST_KEY);if(now&&now!==known){known=now;try{let o=JSON.parse(now);history=read(HIST_KEY,[]);history=history.filter(x=>x.reference!==o.reference);history.unshift(o);history=history.slice(0,20);write(HIST_KEY,history);localStorage.setItem('savoraTrackingRef',o.reference);syncFavoriteButtons()}catch(e){}}},500);
+ // Also detect immediately on page load.
+ try{let o=JSON.parse(localStorage.getItem(LAST_KEY)||'null');if(o){history=read(HIST_KEY,[]);if(!history.some(x=>x.reference===o.reference)){history.unshift(o);history=history.slice(0,20);write(HIST_KEY,history)}}}catch(e){}
+})();
+</script>
 </body>
 </html>
